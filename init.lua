@@ -24,4 +24,6 @@ require("lazy").setup({
     require("plugins.none-ls"),
     require("plugins.alpha"),
     require("plugins.indent-blankline"),
+    require("plugins.autopair"),
+    require("plugins.lazygit"),
 })
