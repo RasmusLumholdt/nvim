@@ -13,7 +13,8 @@ return {
 			local servers = require("plugins.lsp.servers")
 			local on_attach = require("plugins.lsp.on_attach")
 			local tools = require("plugins.lsp.tools")
-
+            local ensure_installed = vim.tbl_keys(servers)
+            vim.list_extend(ensure_installed, tools) 
 			require("plugins.lsp.diagnostics").setup()
 
 			local capabilities = vim.tbl_deep_extend(
@@ -21,8 +22,6 @@ return {
 				vim.lsp.protocol.make_client_capabilities(),
 				require("cmp_nvim_lsp").default_capabilities()
 			)
-
-			local ensure_installed = vim.tbl_keys(servers)
 
 			require("mason-tool-installer").setup({
 				ensure_installed = ensure_installed,
@@ -47,5 +46,12 @@ return {
 				},
 			})
 		end,
+        { import = "plugins.lsp.conform" },
+{
+  "williamboman/mason.nvim",
+  cmd = "Mason",
+  build = ":MasonUpdate",
+  config = true,
+},
 	},
 }
