@@ -1,7 +1,13 @@
 return {
 	{
+		"williamboman/mason.nvim",
+		cmd = "Mason",
+		build = ":MasonUpdate",
+		config = true,
+	},
+	{
 		"neovim/nvim-lspconfig",
-        event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{ "williamboman/mason.nvim", opts = {} },
 			"williamboman/mason-lspconfig.nvim",
@@ -13,8 +19,8 @@ return {
 			local servers = require("plugins.lsp.servers")
 			local on_attach = require("plugins.lsp.on_attach")
 			local tools = require("plugins.lsp.tools")
-            local ensure_installed = vim.tbl_keys(servers)
-            vim.list_extend(ensure_installed, tools) 
+			local ensure_installed = vim.tbl_keys(servers)
+			vim.list_extend(ensure_installed, tools)
 			require("plugins.lsp.diagnostics").setup()
 
 			local capabilities = vim.tbl_deep_extend(
@@ -46,12 +52,6 @@ return {
 				},
 			})
 		end,
-        { import = "plugins.lsp.conform" },
-{
-  "williamboman/mason.nvim",
-  cmd = "Mason",
-  build = ":MasonUpdate",
-  config = true,
-},
 	},
+	{ import = "plugins.lsp.conform" },
 }
