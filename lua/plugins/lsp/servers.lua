@@ -1,3 +1,7 @@
+local lspconfig = require("lspconfig")
+local util = require("lspconfig.util")
+local on_attach = require("plugins.lsp.on_attach")
+
 return {
 	gopls = {},
 	pyright = {
@@ -24,20 +28,5 @@ return {
 				diagnostics = { disable = { "missing-fields" } },
 			},
 		},
-	},
-	omnisharp = {
-		cmd = {
-			"OmniSharp",
-			"--languageserver",
-			"--hostPID",
-			tostring(vim.fn.getpid()),
-		},
-		root_dir = function(fname)
-			return require("lspconfig.util").root_pattern("*.sln", "*.csproj")(fname)
-				or require("lspconfig.util").find_git_ancestor(fname)
-		end,
-		enable_roslyn_analyzers = true,
-		enable_import_completion = true,
-		organize_imports_on_format = true,
 	},
 }

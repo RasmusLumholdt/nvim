@@ -51,6 +51,28 @@ return {
 					end,
 				},
 			})
+			-- Manual omnisharp setup using your config + on_attach
+			local lspconfig = require("lspconfig")
+			local util = require("lspconfig.util")
+
+			lspconfig.omnisharp.setup({
+				cmd = {
+					"OmniSharp",
+					"--languageserver",
+					"--hostPID",
+					tostring(vim.fn.getpid()),
+				},
+				root_dir = function(fname)
+					return util.root_pattern("*.sln")(fname)
+						or util.root_pattern("*.csproj")(fname)
+						or util.root_pattern(".git")(fname)
+				end,
+				enable_roslyn_analyzers = true,
+				enable_import_completion = true,
+				organize_imports_on_format = true,
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
 		end,
 	},
 	{ import = "plugins.lsp.conform" },

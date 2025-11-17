@@ -1,7 +1,7 @@
 local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
 
 local plugins = {}
-
+print("init lua test")
 for _, file in ipairs(vim.fn.readdir(plugin_dir, [[v:val =~ '\.lua$']])) do
 	if file ~= "init.lua" then
 		local name = file:gsub("%.lua$", "")

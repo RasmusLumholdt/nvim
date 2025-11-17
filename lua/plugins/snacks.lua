@@ -128,6 +128,8 @@ return {
 			end,
 			desc = "LSP Workspace Symbols",
 		},
+
+		--                     map("<leader>.", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 		--grep
 		{
 			"<leader>sg",
