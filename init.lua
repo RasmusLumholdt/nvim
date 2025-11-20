@@ -4,15 +4,81 @@ vim.g.maplocalleader = " "
 require("core.keymaps")
 require("core.options")
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		error("Error cloning lazy.nvim:\n" .. out)
-	end
-end
----@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+vim.pack.add({
+    { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+    { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
+})
 
-require("lazy").setup(require("plugins"))
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-tool-installer").setup({
+    ensure_installed = {
+        "lua_ls",
+        "stylua",
+    },
+})
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using
+                -- (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {
+                    "vim",
+                    "require",
+                },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("my.lsp", {}),
+    callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+        if client:supports_method("textDocument/implementation") then
+            -- Create a keymap for vim.lsp.buf.implementation ...
+        end
+
+        -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+        if client:supports_method("textDocument/completion") then
+            -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+            -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+            -- client.server_capabilities.completionProvider.triggerCharacters = chars
+
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+        end
+
+        -- Auto-format ("lint") on save.
+        -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+        if
+            not client:supports_method("textDocument/willSaveWaitUntil")
+            and client:supports_method("textDocument/formatting")
+        then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+                end,
+            })
+        end
+    end,
+})
+
+vim.cmd("set completeopt+=noselect")
