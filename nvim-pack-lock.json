@@ -1,5 +1,18 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "b19413d214068f316c78978b08264ed1c41830ec",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "everforest": {
+      "rev": "484dd560dccb2d2842685c441ad2b54a54ffef1b",
+      "src": "https://github.com/sainnhe/everforest"
+    },
+    "lazydev.nvim": {
+      "rev": "5231c62aa83c2f8dc8e7ba957aa77098cda1257d",
+      "src": "https://github.com/folke/lazydev.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "7d527c76c43f46294de9c19d39c5a86317809b4b",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
@@ -15,6 +28,18 @@
     "nvim-lspconfig": {
       "rev": "b7c48a7111534b66bee077da8035ac7208a294ff",
       "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "snackies": {
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "snacks": {
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
     }
   }
 }

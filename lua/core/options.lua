@@ -10,7 +10,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -20,10 +20,12 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  vim.opt.clipboard = "unnamedplus"
 end)
 
--- Enable break indent
+vim.opt.termguicolors = true -- Enable true colorst
+
+-- Enable break inden
 vim.opt.breakindent = true
 
 -- Save undo history
@@ -34,7 +36,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -50,21 +52,23 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+vim.opt.swapfile = false
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-vim.o.numberwidth = 4 -- set number column width to 2 {default 4}
-vim.o.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.o.tabstop = 4 -- insert n spaces for a tab
-vim.o.softtabstop = 4 -- Number of spaces that a tab counts for while performing editing operations
-vim.o.expandtab = true -- convert tabs to spaces
-vim.o.cursorline = false -- highlight the current line
+vim.o.numberwidth = 4                -- set number column width to 2 {default 4}
+vim.o.shiftwidth = 4                 -- the number of spaces inserted for each indentation
+vim.o.tabstop = 4                    -- insert n spaces for a tab
+vim.o.softtabstop = 4                -- Number of spaces that a tab counts for while performing editing operations
+vim.o.expandtab = true               -- convert tabs to spaces
+vim.o.cursorline = false             -- highlight the current line
+vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 -- vim: ts=2 sts=2 sw=2 et
-
