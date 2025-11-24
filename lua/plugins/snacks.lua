@@ -9,6 +9,7 @@ Snacks.setup({
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
+    lazygit = { enabled = true, configure = true },
     statuscolumn = {
         left = { "mark", "sign" }, -- priority of signs on the left (high to low)
         right = { "fold", "git" }, -- priority of signs on the right (high to low)
@@ -26,10 +27,14 @@ Snacks.setup({
     words = { enabled = true },
 })
 
-vim.keymap.set("n", "<leader>e", Snacks.explorer)
-vim.keymap.set("n", "<leader><space>", Snacks.picker.smart)
-vim.keymap.set("n", "<leader>ff", function()
-    Snacks.picker.files()
-end)
+vim.keymap.set("n", "<leader>lg", Snacks.lazygit.open)
+vim.keymap.set("n", "<leader>t", Snacks.picker.smart)
+-- LSP (gX)
+vim.keymap.set("n", "gd", Snacks.picker.lsp_definitions)
+vim.keymap.set("n", "gi", Snacks.picker.lsp_implementations)
+vim.keymap.set("n", "gr", Snacks.picker.lsp_references)
+vim.keymap.set("n", "gy", Snacks.picker.lsp_type_definitions)
+
+vim.keymap.set("n", "<leader>ff", Snacks.picker.files)
 
 vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"

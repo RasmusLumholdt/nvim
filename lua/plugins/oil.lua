@@ -1,0 +1,7 @@
+-- vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
+--
+-- require("oil").setup({
+--     default_file_explorer = true,
+--     use_default_keymaps = true,
+-- })
+-- vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
