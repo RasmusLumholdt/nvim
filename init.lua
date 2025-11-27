@@ -11,8 +11,10 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
     { src = "https://github.com/saghen/blink.cmp",                         version = vim.version.range("^1") },
+    { src = "https://github.com/seblyng/roslyn.nvim" },
     { src = "https://github.com/folke/lazydev.nvim" },
 })
+
 
 require("mason").setup({
     registries = {
@@ -37,6 +39,7 @@ vim.lsp.config("lua_ls", {
                 -- (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
             },
+            hint = { enable = true },
             -- diagnostics = {
             --     -- Get the language server to recognize the `vim` global
             --     globals = {
@@ -56,6 +59,12 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+vim.lsp.config("roslyn", {})
+vim.lsp.inlay_hint.enable(true)
+vim.diagnostic.config({
+    virtual_text = true,
+    jump = { float = true },
+})
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("my.lsp", {}),
     callback = function(args)

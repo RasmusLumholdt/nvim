@@ -25,6 +25,10 @@
       "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "nvim-ghost.nvim": {
+      "rev": "bdba2a8ad0eec84379d65e7aa9b76a17b11b653a",
+      "src": "https://github.com/subnut/nvim-ghost.nvim"
+    },
     "nvim-lspconfig": {
       "rev": "b7c48a7111534b66bee077da8035ac7208a294ff",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -32,6 +36,10 @@
     "oil.nvim": {
       "rev": "01cb3a8ad7d5e8707041edc775af83dbf33838f4",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "roslyn.nvim": {
+      "rev": "88f837a658df7304ae47fdf251c9560ffbc6bf2b",
+      "src": "https://github.com/seblyng/roslyn.nvim"
     },
     "snackies": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
