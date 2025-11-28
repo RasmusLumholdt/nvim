@@ -6,15 +6,21 @@ require("core.options")
 require("plugins")
 
 vim.pack.add({
-    { src = "https://github.com/neovim/nvim-lspconfig" },
-    { src = "https://github.com/mason-org/mason.nvim" },
-    { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-    { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
-    { src = "https://github.com/saghen/blink.cmp",                         version = vim.version.range("^1") },
-    { src = "https://github.com/seblyng/roslyn.nvim" },
-    { src = "https://github.com/folke/lazydev.nvim" },
-})
 
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/mason-org/mason.nvim",
+    "https://github.com/mason-org/mason-lspconfig.nvim",
+    "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+    "https://github.com/saghen/blink.cmp",
+    "https://github.com/seblyng/roslyn.nvim",
+    "https://github.com/folke/lazydev.nvim",
+
+    --markdownreader + dependencies
+    -- 'https://github.com/nvim-mini/mini.nvim',            -- if you use the mini.nvim suite
+    "https://github.com/nvim-mini/mini.icons", -- if you use standalone mini plugins
+    "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+})
 
 require("mason").setup({
     registries = {
@@ -29,6 +35,12 @@ require("mason-tool-installer").setup({
         "stylua",
     },
 })
+
+require("render-markdown").setup({
+    completions = { lsp = { enabled = true } },
+})
+
+require("mini.icons").setup()
 
 require("lazydev").setup()
 vim.lsp.config("lua_ls", {
