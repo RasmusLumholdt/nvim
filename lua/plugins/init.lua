@@ -7,4 +7,4 @@ vim.g.everforest_transparent_background = 2
 vim.cmd.colorscheme("everforest")
 
 require("plugins.snacks")
-require("plugins.oil")
+require("plugins.minifiles")
