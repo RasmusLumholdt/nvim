@@ -33,6 +33,14 @@
       "rev": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
+    "nvim-dap": {
+      "rev": "5860c7c501eb428d3137ee22c522828d20cca0b3",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-view": {
+      "rev": "25ffcf3a6d8d44b6275dac9d5ff9b1f9485907d9",
+      "src": "https://github.com/igorlfs/nvim-dap-view"
+    },
     "nvim-ghost.nvim": {
       "rev": "bdba2a8ad0eec84379d65e7aa9b76a17b11b653a",
       "src": "https://github.com/subnut/nvim-ghost.nvim"
@@ -56,6 +64,10 @@
     "roslyn.nvim": {
       "rev": "88f837a658df7304ae47fdf251c9560ffbc6bf2b",
       "src": "https://github.com/seblyng/roslyn.nvim"
+    },
+    "smear-cursor.nvim": {
+      "rev": "c85bdbb25db096fbcf616bc4e1357bd61fe2c199",
+      "src": "https://github.com/sphamba/smear-cursor.nvim"
     },
     "snackies": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
