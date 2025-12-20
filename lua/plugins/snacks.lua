@@ -1,93 +1,177 @@
-vim.pack.add({ "https://github.com/folke/snacks.nvim" })
-local Snacks = require("snacks")
-Snacks.setup({
-    bigfile = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    scope = { enabled = true },
-    scroll = { enabled = true },
-    lazygit = { enabled = true, configure = true },
-    statuscolumn = {
-        left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-        right = { "fold", "git" }, -- priority of signs on the right (high to low)
+return {
+  "folke/snacks.nvim",
+
+  -- Lazy-load Snacks on first use of any of these keys
+  keys = {
+    {
+      "<leader>lg",
+      function()
+        require("snacks").lazygit.open()
+      end,
+      mode = "n",
+      desc = "Snacks: Lazygit",
+    },
+    {
+      "<leader>t",
+      function()
+        require("snacks").picker.smart()
+      end,
+      mode = "n",
+      desc = "Snacks: Smart picker",
+    },
+    {
+      "<leader>/",
+      function()
+        require("snacks").picker.grep()
+      end,
+      mode = "n",
+      desc = "Snacks: Grep",
+    },
+    {
+      "<leader><space>",
+      function()
+        require("snacks").picker.buffers({
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+          finder = "buffers",
+          format = "buffer",
+          hidden = false,
+          unloaded = true,
+          current = true,
+          sort_lastused = true,
+          win = {
+            input = {
+              keys = {
+                ["d"] = "bufdelete",
+              },
+            },
+            list = {
+              keys = {
+                ["d"] = "bufdelete",
+              },
+            },
+          },
+          -- layout = "ivy",
+        })
+      end,
+      mode = "n",
+      desc = "Snacks: Buffers",
+    },
+    {
+      "<leader>ss",
+      function()
+        require("snacks").picker.lsp_symbols()
+      end,
+      mode = "n",
+      desc = "Snacks: LSP symbols",
+    },
+    {
+      "<leader>ff",
+      function()
+        require("snacks").picker.files()
+      end,
+      mode = "n",
+      desc = "Snacks: Files",
+    },
+    {
+      "<leader>sS",
+      function()
+        require("snacks").picker.lsp_workspace_symbols()
+      end,
+      mode = "n",
+      desc = "Snacks: Workspace symbols",
+    },
+    {
+      "gd",
+      function()
+        require("snacks").picker.lsp_definitions({
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        })
+      end,
+      mode = "n",
+      desc = "Snacks: LSP definitions",
+    },
+    {
+      "gi",
+      function()
+        require("snacks").picker.lsp_definitions({
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        })
+      end,
+      mode = "n",
+      desc = "Snacks: LSP implementations(?)",
+    },
+    {
+      "gr",
+      function()
+        require("snacks").picker.lsp_references({
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        })
+      end,
+      mode = "n",
+      desc = "Snacks: LSP references",
+    },
+    {
+      "gy",
+      function()
+        require("snacks").picker.lsp_type_definitions()
+      end,
+      mode = "n",
+      desc = "Snacks: LSP type defs",
+    },
+    -- This one does not use Snacks, but putting it here is fine if
+    -- you don't care that it will also trigger loading Snacks.
+    {
+      "<leader>.",
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      mode = "n",
+      desc = "LSP code action",
+    },
+  },
+
+  config = function()
+    local Snacks = require("snacks")
+
+    Snacks.setup({
+      bigfile = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      lazygit = {
+        enabled = true,
+        configure = true,
+      },
+      statuscolumn = {
+        left = { "mark", "sign" },
+        right = { "fold", "git" },
         folds = {
-            open = false,          -- show open fold icons
-            git_hl = false,        -- use Git Signs hl for fold icons
+          open = false,
+          git_hl = false,
         },
         git = {
-            -- patterns to match Git signs
-            patterns = { "GitSign", "MiniDiffSign" },
+          patterns = { "GitSign", "MiniDiffSign" },
         },
-        refresh = 50, -- refresh at most every 50ms
+        refresh = 50,
         enabled = true,
-    },
-    words = { enabled = true },
-    picker = { enabled = true },
-})
-
-vim.keymap.set("n", "<leader>lg", Snacks.lazygit.open)
-
-vim.keymap.set("n", "<leader>t", Snacks.picker.smart)
-vim.keymap.set("n", "<leader>/", Snacks.picker.grep)
-vim.keymap.set("n", "<leader><space>", function()
-    Snacks.picker.buffers({
-        -- I always want my buffers picker to start in normal mode
-        on_show = function()
-            vim.cmd.stopinsert()
-        end,
-        finder = "buffers",
-        format = "buffer",
-        hidden = false,
-        unloaded = true,
-        current = true,
-        sort_lastused = true,
-        win = {
-            input = {
-                keys = {
-                    ["d"] = "bufdelete",
-                },
-            },
-            list = { keys = { ["d"] = "bufdelete" } },
-        },
-        -- In case you want to override the layout for this keymap
-        -- layout = "ivy",
+      },
+      words = { enabled = true },
+      picker = { enabled = true },
     })
-end)
-vim.keymap.set("n", "<leader>ss", Snacks.picker.lsp_symbols)
-vim.keymap.set("n", "<leader>ff", Snacks.picker.files)
 
-vim.keymap.set("n", "<leader>sS", Snacks.picker.lsp_workspace_symbols)
--- LSP (gX)
-vim.keymap.set("n", "gd", function()
-    Snacks.picker.lsp_definitions({
-        on_show = function()
-            vim.cmd.stopinsert()
-        end,
-
-    })
-end)
-
-vim.keymap.set("n", "gi", function()
-    Snacks.picker.lsp_definitions({
-        on_show = function()
-            vim.cmd.stopinsert()
-        end,
-
-    })
-end)
-
-vim.keymap.set("n", "gr", function()
-    Snacks.picker.lsp_references({
-        on_show = function()
-            vim.cmd.stopinsert()
-        end,
-
-    })
-end)
-
-vim.keymap.set("n", "gy", Snacks.picker.lsp_type_definitions)
-vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action)
-
-vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
+    -- Your custom statuscolumn (note: this may override Snacks' own)
+    vim.opt.statuscolumn =
+      "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
+  end,
+}
