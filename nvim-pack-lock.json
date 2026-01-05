@@ -6,7 +6,7 @@
       "version": "'v1.8.0'"
     },
     "everforest": {
-      "rev": "b10ed9a8b37d6b7448908be98ff8f58f550adc48",
+      "rev": "b90025cc84dbb9c46df5a2ae540d3f01cf85af74",
       "src": "https://github.com/sainnhe/everforest"
     },
     "lazydev.nvim": {
@@ -14,7 +14,7 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "7d527c76c43f46294de9c19d39c5a86317809b4b",
+      "rev": "4cfe411526a7a99c18281135e8b4765ae6330d15",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-tool-installer.nvim": {
@@ -30,39 +30,15 @@
       "src": "https://github.com/echasnovski/mini.files"
     },
     "mini.icons": {
-      "rev": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428",
+      "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
-    "nvim-dap": {
-      "rev": "5860c7c501eb428d3137ee22c522828d20cca0b3",
-      "src": "https://github.com/mfussenegger/nvim-dap"
-    },
-    "nvim-dap-view": {
-      "rev": "3508566d29a1c27429f3a91d6a940c205d5d22a1",
-      "src": "https://github.com/igorlfs/nvim-dap-view"
-    },
-    "nvim-ghost.nvim": {
-      "rev": "bdba2a8ad0eec84379d65e7aa9b76a17b11b653a",
-      "src": "https://github.com/subnut/nvim-ghost.nvim"
-    },
     "nvim-lspconfig": {
-      "rev": "b7c48a7111534b66bee077da8035ac7208a294ff",
+      "rev": "ac04ec3c2af08e9821b4eb64ede86072b9b213bf",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "nvim-treesitter": {
-      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
-    "oil.nvim": {
-      "rev": "cbcb3f997f6f261c577b943ec94e4ef55108dd95",
-      "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "render-markdown.nvim": {
-      "rev": "07d088bf8bdadd159eb807b90eaee86a4778383f",
-      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
-    },
     "roslyn.nvim": {
-      "rev": "4deb46ce892c279d3183661342c93aa2ec9716c6",
+      "rev": "4ce6030c82c40b2bee1b6ce1292121ef8354f3a6",
       "src": "https://github.com/seblyng/roslyn.nvim"
     },
     "smear-cursor.nvim": {
@@ -82,7 +58,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "zpack.nvim": {
-      "rev": "322db15b6d54f6fda30d63ae34c06a6642f85ebb",
+      "rev": "b331e1dda54511085a778d2881dd246b8ed58800",
       "src": "https://github.com/zuqini/zpack.nvim"
     }
   }

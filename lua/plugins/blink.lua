@@ -2,7 +2,7 @@ return {
   "saghen/blink.cmp",
   event = "InsertEnter",
 
-  version = "v1.8.0",
+  version = "v1.8.0", -- have to give specific blink branch, because of zpack limitation, to update specify newer branch
   config = function()
     require("blink.cmp").setup({
       fuzzy = { implementation = "prefer_rust_with_warning" },
