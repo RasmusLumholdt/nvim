@@ -53,6 +53,10 @@
       "rev": "4ce6030c82c40b2bee1b6ce1292121ef8354f3a6",
       "src": "https://github.com/seblyng/roslyn.nvim"
     },
+    "smart-splits.nvim": {
+      "rev": "fdd63c566e760f14d9390d43d5dc6bf6eea5a07b",
+      "src": "https://github.com/mrjones2014/smart-splits.nvim"
+    },
     "smear-cursor.nvim": {
       "rev": "c85bdbb25db096fbcf616bc4e1357bd61fe2c199",
       "src": "https://github.com/sphamba/smear-cursor.nvim"
@@ -68,6 +72,10 @@
     "snacks.nvim": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "wezterm-move.nvim": {
+      "rev": "e2954ee4ddc9fee427ffa4d17f781875b9461103",
+      "src": "https://github.com/letieu/wezterm-move.nvim"
     },
     "zpack.nvim": {
       "rev": "b331e1dda54511085a778d2881dd246b8ed58800",
