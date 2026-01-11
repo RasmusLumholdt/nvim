@@ -46,7 +46,10 @@ vim.lsp.config("roslyn", {
     },
 })
 
-local lua_ls = vim.lsp.config("lua_ls", {
+vim.lsp.config("lua_ls", {
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
     settings = {
         Lua = {
             runtime = { version = "LuaJIT" },
@@ -56,12 +59,7 @@ local lua_ls = vim.lsp.config("lua_ls", {
     },
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "lua",
-    callback = function(args)
-        vim.lsp.start(lua_ls, { bufnr = args.buf })
-    end,
-})
+vim.lsp.enable("lua_ls")
 
 local vtsls = vim.lsp.config("vtsls", {
     settings = {
