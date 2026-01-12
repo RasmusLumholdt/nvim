@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("zpack").setup({})
-require('config')
+require("config")
 
 -- vim.pack.add({
 --

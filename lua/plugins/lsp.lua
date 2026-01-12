@@ -43,6 +43,8 @@ return {
         config = function()
             require("mason-tool-installer").setup({
                 ensure_installed = {
+                    "roslyn",
+                    "lua_ls",
                     -- tools, not LSP servers, usually:
                     "stylua",
                 },
