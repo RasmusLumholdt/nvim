@@ -34,7 +34,7 @@
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "nvim-lspconfig": {
-      "rev": "ac04ec3c2af08e9821b4eb64ede86072b9b213bf",
+      "rev": "0b38bc74487e73489624d61396af7805af9cc75f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "roslyn.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "zpack.nvim": {
-      "rev": "b331e1dda54511085a778d2881dd246b8ed58800",
+      "rev": "e4a594edf843c28550dec4a17523655ce1aee635",
       "src": "https://github.com/zuqini/zpack.nvim"
     }
   }
