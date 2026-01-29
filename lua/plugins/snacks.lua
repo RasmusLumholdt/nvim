@@ -20,9 +20,25 @@ return {
             desc = "Snacks: Smart picker",
         },
         {
+            "<leader>sr",
+            function()
+                require("snacks").picker.resume()
+            end,
+            mode = "n",
+            desc = "Open previous search",
+        },
+        {
             "<leader>/",
             function()
                 require("snacks").picker.grep()
+            end,
+            mode = "n",
+            desc = "Snacks: Grep",
+        },
+        {
+            "<leader>D",
+            function()
+                require("snacks").picker.diagnostics()
             end,
             mode = "n",
             desc = "Snacks: Grep",
@@ -97,7 +113,7 @@ return {
         {
             "gi",
             function()
-                require("snacks").picker.lsp_definitions({
+                require("snacks").picker.lsp_implementations({
                     on_show = function()
                         vim.cmd.stopinsert()
                     end,
@@ -137,7 +153,7 @@ return {
             desc = "LSP code action",
         },
         {
-            "<leader>gi",
+            "<leader>ghi",
             function()
                 Snacks.picker.gh_issue()
             end,

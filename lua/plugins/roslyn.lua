@@ -5,9 +5,9 @@ return {
         require("roslyn").setup({
             filewatching = "auto",
             choose_target = nil,
-            ignore_target = nil,
-            broad_search = false,
-            lock_target = false,
+            -- ignore_target = nil,
+            broad_search = true,
+            lock_target = true,
             silent = false,
         })
     end,
