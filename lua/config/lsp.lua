@@ -74,3 +74,15 @@ vim.lsp.config("ts_ls", {
 })
 
 vim.lsp.enable("ts_ls")
+
+
+
+--TREESITTER INIT
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(args)
+        -- Try to start TS for any buffer; if there is no parser,
+        -- pcall prevents errors.
+        pcall(vim.treesitter.start, args.buf)
+    end,
+})

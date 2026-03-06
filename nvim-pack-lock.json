@@ -13,6 +13,10 @@
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
     },
+    "easy-dotnet.nvim": {
+      "rev": "57419b04a7419e0fc6940d8f4f7bb2456c78f187",
+      "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
+    },
     "everforest": {
       "rev": "b03a03148c8b34c24c96960b93da9c8883d11f54",
       "src": "https://github.com/sainnhe/everforest"
@@ -96,6 +100,10 @@
     "snacks.nvim": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "ad7d9580338354ccc136e5b8f0aa4f880434dcdc",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "undotree": {
       "rev": "f68aed28c8ff1294b012dfadaced2084dc045870",
