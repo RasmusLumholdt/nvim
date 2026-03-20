@@ -62,6 +62,30 @@ vim.opt.cursorline = true
 
 vim.opt.swapfile = false
 
+-- https://emojipedia.org/en/stickers/search?q=circle
+vim.fn.sign_define('DapBreakpoint',
+  {
+    text = '⚪',
+    texthl = 'DapBreakpointSymbol',
+    linehl = 'DapBreakpoint',
+    numhl = 'DapBreakpoint'
+  })
+
+vim.fn.sign_define('DapStopped',
+  {
+    text = '🔴',
+    texthl = 'yellow',
+    linehl = 'DapBreakpoint',
+    numhl = 'DapBreakpoint'
+  })
+vim.fn.sign_define('DapBreakpointRejected',
+  {
+    text = '⭕',
+    texthl = 'DapStoppedSymbol',
+    linehl = 'DapBreakpoint',
+    numhl = 'DapBreakpoint'
+  })
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 vim.o.numberwidth = 4                -- set number column width to 2 {default 4}
