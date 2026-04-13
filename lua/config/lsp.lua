@@ -5,11 +5,10 @@ vim.diagnostic.config({
     jump = { float = true },
 })
 
--- Disable unwanted auto-enabled servers
-vim.lsp.enable("vue_ls", false)
-vim.lsp.enable("volar", false)
-vim.lsp.enable("pyright", false)
-vim.lsp.enable("stylua", false)
+vim.lsp.enable("vue_ls")
+vim.lsp.enable("volar")
+vim.lsp.enable("pyright")
+vim.lsp.enable("stylua")
 
 -- vim.api.nvim_create_autocmd("LspAttach", {
 --     group = vim.api.nvim_create_augroup("my.lsp", {}),

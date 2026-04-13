@@ -63,36 +63,34 @@ vim.opt.cursorline = true
 vim.opt.swapfile = false
 
 -- https://emojipedia.org/en/stickers/search?q=circle
-vim.fn.sign_define('DapBreakpoint',
-  {
-    text = '⚪',
-    texthl = 'DapBreakpointSymbol',
-    linehl = 'DapBreakpoint',
-    numhl = 'DapBreakpoint'
-  })
+vim.fn.sign_define("DapBreakpoint", {
+  text = "⚪",
+  texthl = "DapBreakpointSymbol",
+  linehl = "DapBreakpoint",
+  numhl = "DapBreakpoint",
+})
 
-vim.fn.sign_define('DapStopped',
-  {
-    text = '🔴',
-    texthl = 'yellow',
-    linehl = 'DapBreakpoint',
-    numhl = 'DapBreakpoint'
-  })
-vim.fn.sign_define('DapBreakpointRejected',
-  {
-    text = '⭕',
-    texthl = 'DapStoppedSymbol',
-    linehl = 'DapBreakpoint',
-    numhl = 'DapBreakpoint'
-  })
+vim.fn.sign_define("DapStopped", {
+  text = "🔴",
+  texthl = "yellow",
+  linehl = "DapBreakpoint",
+  numhl = "DapBreakpoint",
+})
+vim.fn.sign_define("DapBreakpointRejected", {
+  text = "⭕",
+  texthl = "DapStoppedSymbol",
+  linehl = "DapBreakpoint",
+  numhl = "DapBreakpoint",
+})
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-vim.o.numberwidth = 4                -- set number column width to 2 {default 4}
-vim.o.shiftwidth = 4                 -- the number of spaces inserted for each indentation
-vim.o.tabstop = 4                    -- insert n spaces for a tab
-vim.o.softtabstop = 4                -- Number of spaces that a tab counts for while performing editing operations
-vim.o.expandtab = true               -- convert tabs to spaces
-vim.o.cursorline = false             -- highlight the current line
+vim.o.numberwidth = 4  -- set number column width to 2 {default 4}
+vim.o.shiftwidth = 4   -- the number of spaces inserted for each indentation
+vim.o.tabstop = 4      -- insert n spaces for a tab
+vim.o.softtabstop = 4  -- Number of spaces that a tab counts for while performing editing operations
+vim.o.expandtab = true -- convert tabs to spaces
+vim.o.cursorlineopt = "number"
+vim.o.cursorline = true
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 -- vim: ts=2 sts=2 sw=2 et

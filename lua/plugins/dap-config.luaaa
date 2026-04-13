@@ -25,6 +25,18 @@ return {
                     program = function()
                         return dotnet.build_dll_path()
                     end,
+                    args = function()
+                        local input = vim.fn.input("Arguments: ")
+                        return vim.split(input, " ", { trimempty = true })
+                    end,
+                    cwd = function()
+                        return dotnet.find_project_root_by_csproj(
+                            vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h")
+                        )
+                    end,
+                    console = "internalConsole",
+                    stopAtEntry = false,
+                    justMyCode = false,
                 },
             }
 
