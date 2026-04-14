@@ -1,57 +1,51 @@
-vim.pack.add({ "https://github.com/zuqini/zpack.nvim" })
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("zpack").setup({})
-require("config")
+-- Build hooks for plugins that need post-install/update actions
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == "nvim-treesitter" and (kind == "install" or kind == "update") then
+            vim.cmd("TSUpdate")
+        end
+    end,
+})
 
--- vim.pack.add({
---
---     "https://github.com/nvim-treesitter/nvim-treesitter",
---     "https://github.com/neovim/nvim-lspconfig",
---     "https://github.com/mason-org/mason.nvim",
---     "https://github.com/mason-org/mason-lspconfig.nvim",
---     "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
---     "https://github.com/saghen/blink.cmp",
---     "https://github.com/seblyng/roslyn.nvim",
---     "https://github.com/folke/lazydev.nvim",
---
---     --markdownreader + dependencies
---     -- 'https://github.com/nvim-mini/mini.nvim',            -- if you use the mini.nvim suite
---     "https://github.com/nvim-mini/mini.icons", -- if you use standalone mini plugins
---     "https://github.com/MeanderingProgrammer/render-markdown.nvim",
--- })
---
--- require("render-markdown").setup({
---     completions = { lsp = { enabled = true } },
--- })
---
--- require("lazydev").setup()
--- vim.lsp.config("lua_ls", {
---     settings = {
---         Lua = {
---             runtime = {
---                 -- Tell the language server which version of Lua you're using
---                 -- (most likely LuaJIT in the case of Neovim)
---                 version = "LuaJIT",
---             },
---             hint = { enable = true },
---             -- diagnostics = {
---             --     -- Get the language server to recognize the `vim` global
---             --     globals = {
---             --         "vim",
---             --         "require",
---             --     },
---             -- },
---             -- workspace = {
---             --     -- Make the server aware of Neovim runtime files
---             --     library = vim.env.VIMRUNTIME
---             -- },
---             -- Do not send telemetry data containing a randomized but unique identifier
---             telemetry = {
---                 enable = false,
---             },
---         },
---     },
--- })
+vim.pack.add({
+    -- Dependencies first
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/nvim-tree/nvim-web-devicons",
+
+    -- UI
+    "https://github.com/rebelot/kanagawa.nvim",
+    "https://github.com/nvim-lualine/lualine.nvim",
+    "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+    "https://github.com/letieu/wezterm-move.nvim",
+    "https://github.com/sphamba/smear-cursor.nvim",
+
+    -- Editor
+    "https://github.com/folke/snacks.nvim",
+    "https://github.com/nvim-mini/mini.icons",
+    "https://github.com/echasnovski/mini.files",
+    "https://github.com/jiaoshijie/undotree",
+    "https://github.com/TheNoeTrevino/haunt.nvim",
+
+    -- LSP / Completion
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/mason-org/mason.nvim",
+    "https://github.com/mason-org/mason-lspconfig.nvim",
+    "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+    "https://github.com/folke/lazydev.nvim",
+    "https://github.com/seblyng/roslyn.nvim",
+    "https://github.com/stevearc/conform.nvim",
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
+
+    -- Treesitter
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+
+    -- Git (loaded eagerly, but neogit is only triggered via keymap)
+    "https://github.com/sindrets/diffview.nvim",
+    "https://github.com/NeogitOrg/neogit",
+})
+
+require("config")

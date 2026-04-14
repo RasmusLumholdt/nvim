@@ -23,7 +23,15 @@ vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)
 
-vim.opt.termguicolors = true -- Enable true colorst
+vim.opt.termguicolors = true -- Enable true colors
+vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
+vim.o.cmdheight = 0
+require("vim._core.ui2").enable({
+    msg = {
+        targets = "msg",
+    },
+})
 
 -- Enable break inden
 vim.opt.breakindent = true

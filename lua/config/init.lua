@@ -1,3 +1,7 @@
 require("config.keymaps")
 require("config.options")
+require("plugins.ui")
+require("plugins.editor")
+require("plugins.lsp")
+require("plugins.git")
 require("config.lsp")
